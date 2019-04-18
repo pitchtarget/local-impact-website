@@ -14,6 +14,7 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  cta
 }) => (
   <div>
     <div
@@ -24,6 +25,7 @@ export const IndexPageTemplate = ({
         })`,
         backgroundPosition: `top left`,
         backgroundAttachment: `fixed`,
+        height: `100vh`
       }}
     >
       <div
@@ -62,6 +64,7 @@ export const IndexPageTemplate = ({
         >
           {subheading}
         </h3>
+        <button className="button is-danger is-rounded">{cta}</button>
       </div>
     </div>
     <section className="section section--gradient">
@@ -133,6 +136,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
+        cta={frontmatter.cta}
         title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
@@ -167,6 +171,7 @@ export const pageQuery = graphql`
           }
         }
         heading
+        cta
         subheading
         mainpitch {
           title
