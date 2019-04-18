@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
 
 const Navbar = class extends React.Component {
@@ -59,39 +58,29 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
+            <div className="navbar-end has-text-centered">
               <Link className="navbar-item" to="/contact">
                 Contact
               </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
             </div>
           </div>
         </div>
       </nav>
     );
+              // <Link className="navbar-item" to="/blog">
+              //   Blog
+              // </Link>
+    // <div className="navbar-start has-text-centered">
+    //   <Link className="navbar-item" to="/about">
+    //     About
+    //   </Link>
+    //   <Link className="navbar-item" to="/products">
+    //     Products
+    //   </Link>
+    //   <Link className="navbar-item" to="/contact/examples">
+    //     Form Examples
+    //   </Link>
+    // </div>
   }
 };
 

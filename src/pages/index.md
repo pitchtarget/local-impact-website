@@ -2,50 +2,27 @@
 templateKey: index-page
 title: Aumenta le tue vendite offline
 image: /img/home-jumbotron.jpg
-heading: Aumenta le tue vendite offline
 cta: Scopri come
 subheading: Local Impact è una piattaforma che automatizza le tue inserzioni su Facebook e sincronizza la tua strategia online con i punti vendita fisici
-mainpitch:
-  title: Why Kaldi
-  description: >
-    Kaldi is the coffee store for everyone who believes that great coffee
-    shouldn't just taste good, it should do good too. We source all of our beans
-    directly from small scale sustainable farmers and make sure part of the
-    profits are reinvested in their communities.
-description: >-
-  Kaldi is the ultimate spot for coffee lovers who want to learn about their
-  java’s origin and support the farmers that grew it. We take coffee production,
-  roasting and brewing seriously and we’re glad to pass that knowledge to
-  anyone.
+heading: Local Impact aumenta l'efficacia delle campagne social del tuo brand a livello locale
 intro:
   blurbs:
     - image: /img/coffee.png
+      title: Una comunicazione unica per tutti i punti vendita
       text: >
-        We sell green and roasted coffee beans that are sourced directly from
-        independent farmers and farm cooperatives. We’re proud to offer a
-        variety of coffee beans grown with great care for the environment and
-        local communities. Check our post or contact us directly for current
-        availability.
+        Spesso i brand parlano al cliente finale non coinvolgendo il rivenditore. Local Impact ti consente di armonizzare la comunicazione e uniformare il messaggio dall'inizio alla fine della filiera
     - image: /img/coffee-gear.png
+      title: Porta nuovi clienti nei negozi
       text: >
-        We offer a small, but carefully curated selection of brewing gear and
-        tools for every taste and experience level. No matter if you roast your
-        own beans or just bought your first french press, you’ll find a gadget
-        to fall in love with in our shop.
+        Il produttore può dare visibilità al proprio prodotto 'accompagnando' i potenziali clienti direttamente al punto vendita ed erogando un servizio al rivenditore, supportandolo nelle azioni di promozione online
     - image: /img/tutorials.png
+      title: Fidelizza i clienti con i coupon online
       text: >
-        Love a great cup of coffee, but never knew how to make one? Bought a
-        fancy new Chemex but have no clue how to use it? Don't worry, we’re here
-        to help. You can schedule a custom 1-on-1 consultation with our baristas
-        to learn anything you want to know about coffee roasting and brewing.
-        Email us or call the store for details.
+        Con Local Impact puoi creare campagne di promozione e couponing per attrarre nuovi clienti e fidelizzare quelli già esistenti
     - image: /img/meeting-space.png
+      title: Crea inserzioni che catturano l'attenzione
       text: >
-        We believe that good coffee has the power to bring people together.
-        That’s why we decided to turn a corner of our shop into a cozy meeting
-        space where you can hang out with fellow coffee lovers and learn about
-        coffee making techniques. All of the artwork on display there is for
-        sale. The full price you pay goes to the artist.
+        Local Impact crea delle inserzioni con informazioni geotargetizzate per aumentare la rilevanza verso i potenziali clienti che si trovano in prossimità dei punti vendita dove si trova il tuo brand
   heading: What we offer
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their
