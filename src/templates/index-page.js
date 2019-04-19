@@ -31,35 +31,45 @@ export const IndexPageTemplate = ({
     >
       <div
         style={{
-          display: 'flex',
-          width: '50vw',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
+          flex: '1',
         }}
       >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+        <div
           style={{
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
+            width: '38rem',
+            paddingLeft: '10rem'
           }}
         >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {subheading}
-        </h3>
-        <a href="#features" className="button is-danger is-rounded">{cta}</a>
+          <h1
+            className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+            style={{
+              color: 'white',
+              lineHeight: '1',
+              padding: '0.25em',
+            }}
+          >
+            {title}
+          </h1>
+          <h3
+            className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+            style={{
+              color: 'white',
+              lineHeight: '1',
+              padding: '0.25em',
+            }}
+          >
+            {subheading}
+          </h3>
+          <a
+            href="#features"
+            style={{
+              padding: '1em 3em 1em 3em',
+            }}
+            className="button is-danger is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+          >
+            {cta}
+          </a>
+        </div>
       </div>
     </div>
     <section id="features" className="section section--gradient">
