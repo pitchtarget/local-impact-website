@@ -1,5 +1,6 @@
 ---
 templateKey: 'about-page'
+published: false
 path: /about
 title: About our values
 ---

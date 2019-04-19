@@ -1,5 +1,6 @@
 ---
 templateKey: 'product-page'
+published: false
 path: /products
 title: Our Coffee
 image: /img/jumbotron.jpg

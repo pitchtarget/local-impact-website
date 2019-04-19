@@ -1,5 +1,6 @@
 ---
 templateKey: index-page
+published: true
 title: Aumenta le tue vendite offline
 image: /img/cover.jpg
 cta: Scopri come
