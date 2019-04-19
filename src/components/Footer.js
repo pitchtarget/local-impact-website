@@ -51,7 +51,7 @@ const Footer = class extends React.Component {
                     </li>
                     <li>
                       <a className="navbar-item" href="mailto:financial@pitchtarget.com">
-                        Contact
+                        Contattaci
                       </a>
                     </li>
                   </ul>
@@ -62,7 +62,7 @@ const Footer = class extends React.Component {
                   <ul className="menu-list">
                     <li>Addictive s.r.l</li>
                     <li>Via Sile 41, 31056, Roncade (TV), Italia</li>
-                    <li>Phone: +390422789611</li>
+                    <li>+390422789611</li>
                     <li>VAT: IT04636600266</li>
                   </ul>
                 </section>
