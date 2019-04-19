@@ -16,12 +16,29 @@ const Footer = class extends React.Component {
         <div className="content has-text-centered has-background-black has-text-white-ter">
           <div className="container has-background-black has-text-white-ter">
             <div className="columns is-desktop">
-              <div className="column is-1">
+              <div className="column">
                 <img
                   src={logo}
                   alt="Kaldi"
                   style={{ width: '6em', height: 'auto', }}
                 />
+                <div className="social">
+                  <a title="facebook" href="https://www.facebook.com/pitchtarget/">
+                    <img
+                      src={facebook}
+                      alt="Facebook"
+                      style={{ width: '1em', height: '1em' }}
+                    />
+                  </a>
+                  <a title="twitter" href="https://twitter.com/pitchtarget">
+                    <img
+                      className="fas fa-lg"
+                      src={twitter}
+                      alt="Twitter"
+                      style={{ width: '1em', height: '1em' }}
+                    />
+                  </a>
+                </div>
               </div>
               <div className="column">
                 <section className="menu">
@@ -38,23 +55,6 @@ const Footer = class extends React.Component {
                     </li>
                   </ul>
                 </section>
-              </div>
-              <div className="column social">
-                <a title="facebook" href="https://www.facebook.com/pitchtarget/">
-                  <img
-                    src={facebook}
-                    alt="Facebook"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="twitter" href="https://twitter.com/pitchtarget">
-                  <img
-                    className="fas fa-lg"
-                    src={twitter}
-                    alt="Twitter"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
               </div>
               <div className="column">
                 <section>
