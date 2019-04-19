@@ -10,7 +10,8 @@ const FeatureGrid = ({ gridItems }) => (
           <div className="has-text-centered">
             <div
               style={{
-                width: '240px',
+                maxWidth: '500px',
+                width: `100%`,
                 display: 'inline-block',
               }}
             >
@@ -18,7 +19,7 @@ const FeatureGrid = ({ gridItems }) => (
             </div>
           </div>
           <h3
-            className="has-text-centered is-size-4-mobile is-size-3-tablet is-size-2-widescreen"
+            className="has-text-centered is-size-4-tablet is-size-3-widescreen"
           >
             {item.title}
             </h3>
