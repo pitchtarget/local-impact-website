@@ -1,25 +1,25 @@
 ---
 templateKey: index-page
 title: Aumenta le tue vendite offline
-image: /img/home-jumbotron.jpg
+image: /img/cover.jpg
 cta: Scopri come
 subheading: Local Impact è una piattaforma che automatizza le tue inserzioni su Facebook e sincronizza la tua strategia online con i punti vendita fisici
 heading: Local Impact aumenta l'efficacia delle campagne social del tuo brand a livello locale
 intro:
   blurbs:
-    - image: /img/coffee.png
+    - image: /img/feature_1.png
       title: Una comunicazione unica per tutti i punti vendita
       text: >
         Spesso i brand parlano al cliente finale non coinvolgendo il rivenditore. Local Impact ti consente di armonizzare la comunicazione e uniformare il messaggio dall'inizio alla fine della filiera
-    - image: /img/coffee-gear.png
+    - image: /img/feature_2.png
       title: Porta nuovi clienti nei negozi
       text: >
         Il produttore può dare visibilità al proprio prodotto 'accompagnando' i potenziali clienti direttamente al punto vendita ed erogando un servizio al rivenditore, supportandolo nelle azioni di promozione online
-    - image: /img/tutorials.png
+    - image: /img/feature_3.png
       title: Fidelizza i clienti con i coupon online
       text: >
         Con Local Impact puoi creare campagne di promozione e couponing per attrarre nuovi clienti e fidelizzare quelli già esistenti
-    - image: /img/meeting-space.png
+    - image: /img/feature_4.png
       title: Crea inserzioni che catturano l'attenzione
       text: >
         Local Impact crea delle inserzioni con informazioni geotargetizzate per aumentare la rilevanza verso i potenziali clienti che si trovano in prossimità dei punti vendita dove si trova il tuo brand
