@@ -22,12 +22,14 @@ export const IndexPageTemplate = ({
       className="full-width-image margin-top-0"
       style={{
         background: `
-          linear-gradient(45deg, rgba(242,106,79,0) 30%,rgba(242,106,79,0.5) 100%),
-          linear-gradient(to right, rgba(255,255,255,0.95) 0%,rgba(255,255,255,0.5) 40%,rgba(255,255,255,0) 60%),
+          linear-gradient(45deg, rgba(242,106,79,0) 30%,rgba(242,106,79,0.6) 100%),
+          linear-gradient(to right, rgba(255,255,255,0.98) 0%,rgba(255,255,255,0.65) 40%,rgba(255,255,255,0) 80%),
           url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
         })`,
-        height: `80vh`
+        backgroundPosition: `center`,
+        backgroundAttachment: `fixed`,
+        height: `100vh`
       }}
     >
       <div
