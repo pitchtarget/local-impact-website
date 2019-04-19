@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import bulmaCarousel from 'bulma-carousel'
-// import bulmaCarousel from '~bulma-carousel/dist/js/bulma-carousel.min.js';
 
 const Carousel = class extends React.Component {
   componentDidMount() {
