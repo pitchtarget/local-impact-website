@@ -21,72 +21,69 @@ export const IndexPageTemplate = ({
     <div
       className="full-width-image margin-top-0"
       style={{
-        backgroundImage: `url(${
+        background: `
+          linear-gradient(45deg, rgba(242,106,79,0) 30%,rgba(242,106,79,0.5) 100%),
+          linear-gradient(to right, rgba(255,255,255,0.95) 0%,rgba(255,255,255,0.5) 40%,rgba(255,255,255,0) 60%),
+          url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
         })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-        height: `100vh`
+        height: `80vh`
       }}
     >
       <div
-        style={{
-          flex: '1',
-        }}
+        className="container section"
       >
         <div
-          style={{
-            width: '38rem',
-            paddingLeft: '10rem'
-          }}
+          className="columns is-desktop"
         >
-          <h1
-            className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-            style={{
-              color: 'white',
-              lineHeight: '1',
-              padding: '0.25em',
-            }}
+          <div
+            className="column is-6"
           >
-            {title}
-          </h1>
-          <h3
-            className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-            style={{
-              color: 'white',
-              lineHeight: '1',
-              padding: '0.25em',
-            }}
-          >
-            {subheading}
-          </h3>
-          <a
-            href="#features"
-            style={{
-              padding: '1em 3em 1em 3em',
-            }}
-            className="button is-danger is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          >
-            {cta}
-          </a>
+            <h1
+              className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+              style={{
+                lineHeight: '1',
+                padding: '0.25em',
+              }}
+            >
+              {title}
+            </h1>
+            <h3
+              className="has-text-weight-semibold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+              style={{
+                lineHeight: '1',
+                padding: '0.25em',
+                marginBottom: '1em',
+              }}
+            >
+              {subheading}
+            </h3>
+            <a
+              href="#features"
+              style={{
+                padding: '1em 3em 1em 3em',
+              }}
+              className="button is-primary is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+            >
+              {cta}
+            </a>
+          </div>
         </div>
       </div>
     </div>
     <section id="features" className="section section--gradient">
       <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                  </div>
+        <div className="columns">
+          <div className="column is-10 is-offset-1 is-desktop">
+            <div className="content">
+              <div className="columns is-centered">
+                <div className="column is-8">
+                  <h3 className="has-text-weight-semibold is-size-3 has-text-centered">
+                    {heading}
+                  </h3>
                 </div>
-                <Features gridItems={intro.blurbs} />
               </div>
+              <Features gridItems={intro.blurbs} />
             </div>
           </div>
         </div>

@@ -1,15 +1,35 @@
-@import "~bulma/sass/utilities/_all.sass"
-@import "~bulma/sass/elements/button.sass"
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900')
 
 // Config vars
 // Kaldi logo brand color: #FD461E
-$kaldi-red: #D64000
+$kaldi-red: #F3544C
 $kaldi-red-invert: #fff
 
 $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 $body-color: #333
-$black: #2b2523
+$black: #372F41
+
+$family-primary: 'Roboto'
+$weight-bold: 900
+$weight-semibold: 700
+$weight-medium: 500
+$weight-regular: 400
+$weight-light: 300
+
+$size-1: 4rem
+$size-2: 2.5rem
+$size-3: 2rem
+$size-4: 1.5rem
+$size-5: 1.25rem
+$size-6: 1rem
+$size-7: .75rem
+
+
+@import "~bulma/sass/utilities/_all.sass"
+@import "~bulma/sass/base/_all.sass"
+@import "~bulma/sass/elements/_all.sass"
+@import "~bulma/sass/grid/_all.sass"
 
 .navbar .navbar-menu
   box-shadow:none !important
@@ -28,6 +48,9 @@ $black: #2b2523
     padding: 0 2rem 1rem 0
     margin-bottom: 1.5rem
     margin-top: 0
+
+.button
+  font-weight: $weight-bold
 
 // Helper Classes
 .full-width-image-container
@@ -93,7 +116,6 @@ $menu-item-active-color: $kaldi-red-invert
 $menu-item-active-background-color:	$kaldi-red-invert
 $menu-list-border-left: 1px solid $kaldi-red-invert
 $menu-label-color: $white-ter
-
 
 .menu-label
   font-size: 1em !important
