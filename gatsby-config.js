@@ -2,9 +2,9 @@ var proxy = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Local Impact',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+      'Local Impact è una piattaforma che automatizza le tue inserzioni su Facebook e sincronizza la tua strategia online con i punti vendita fisici.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

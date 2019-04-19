@@ -36,9 +36,7 @@ const Footer = class extends React.Component {
                 <section>
                   <ul className="menu-list">
                     <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
-                      </Link>
+                      <a className="navbar-item" href="mailto:financial@pitchtarget.com">Contact</a>
                     </li>
                   </ul>
                 </section>
@@ -50,5 +48,8 @@ const Footer = class extends React.Component {
     )
   }
 }
+                      // <Link className="navbar-item" to="/contact">
+                      //   Contact
+                      // </Link>
 
 export default Footer
