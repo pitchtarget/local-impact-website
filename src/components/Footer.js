@@ -20,7 +20,7 @@ const Footer = class extends React.Component {
               <div className="column">
                 <img
                   src={logo}
-                  alt="Kaldi"
+                  alt="Local Impact"
                   style={{ width: '6em', height: 'auto', }}
                 />
                 <div className="social">
