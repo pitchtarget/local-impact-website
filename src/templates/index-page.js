@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
+import Carousel from '../components/Carousel'
 // import BlogRoll from '../components/BlogRoll'
 
 export const IndexPageTemplate = ({
@@ -84,8 +85,9 @@ export const IndexPageTemplate = ({
                     {heading}
                   </h3>
                 </div>
+                <Features gridItems={intro.blurbs} />
+                <Carousel items={intro.carousel} />
               </div>
-              <Features gridItems={intro.blurbs} />
             </div>
           </div>
         </div>
@@ -119,12 +121,12 @@ IndexPageTemplate.propTypes = {
   subheading: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
+    carousel: PropTypes.array,
   }),
 }
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
-
   return (
     <Layout>
       <IndexPageTemplate
@@ -174,7 +176,17 @@ export const pageQuery = graphql`
               }
             }
             text
+          }
+          carousel {
+            image {
+              childImageSharp {
+                fluid(maxWidth: 240, quality: 64) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             title
+            text
           }
           heading
           description
