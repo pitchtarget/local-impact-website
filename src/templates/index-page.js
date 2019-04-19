@@ -59,10 +59,10 @@ export const IndexPageTemplate = ({
         >
           {subheading}
         </h3>
-        <button className="button is-danger is-rounded">{cta}</button>
+        <a href="#features" className="button is-danger is-rounded">{cta}</a>
       </div>
     </div>
-    <section className="section section--gradient">
+    <section id="features" className="section section--gradient">
       <div className="container">
         <div className="section">
           <div className="columns">
