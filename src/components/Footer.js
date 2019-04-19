@@ -12,6 +12,7 @@ const Footer = class extends React.Component {
     return (
       <footer
         className="footer has-background-black has-text-white-ter"
+        style={{padding: `2em 0em`}}
       >
         <div className="content has-text-centered has-background-black has-text-white-ter">
           <div className="container has-background-black has-text-white-ter">
