@@ -6,7 +6,7 @@ import bulmaCarousel from 'bulma-carousel'
 
 const Carousel = class extends React.Component {
   componentDidMount() {
-    bulmaCarousel.attach('#carousel-demo');
+    bulmaCarousel.attach('#carousel-demo')
   }
 
   render() {
