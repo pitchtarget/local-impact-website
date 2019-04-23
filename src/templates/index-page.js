@@ -50,7 +50,7 @@ export const IndexPageTemplate = ({
             >
               {title}
             </h1>
-            <h3
+            <h2
               className="has-text-weight-semibold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
               style={{
                 lineHeight: '1',
@@ -59,7 +59,7 @@ export const IndexPageTemplate = ({
               }}
             >
               {subheading}
-            </h3>
+            </h2>
             <a
               href="#features"
               style={{
