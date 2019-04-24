@@ -30,17 +30,19 @@ const Carousel = class extends React.Component {
     const isMobile = width < 846; // bulma carousel limit
 
     const leftContainerStyle = {
-      margin: isMobile ? '2.5rem 2.5rem 0 2.5rem' : '2.5rem .5rem 2.5rem 4rem'
+      maxWidth: '500px',
+      margin: isMobile ? '2.5rem 2.5rem 0 2.5rem' : '2.5rem .5rem 2.5rem auto'
     };
     const rightContainerStyle = {
-      margin: isMobile ? '0 2.5rem 2.5rem 2.5rem' : '2.5rem 4rem 2.5rem .5rem',
+      maxWidth: '500px',
+      margin: isMobile ? '0 2.5rem 2.5rem 2.5rem' : '2.5rem auto 2.5rem .5rem',
       textAlign: isMobile ? 'center' : 'left',
     };
 
     return (
       <section
         className="hero is-medium has-carousel carousel--bg"
-        style={{minHeight: isMobile ? '80vh' : '50vh'}}
+        style={{minHeight: isMobile ? '80vh' : '600px'}}
       >
         <div className={!isMobile && "container is-fluid"} >
           <div id="carousel-demo" className="hero-carousel carousel--container" >

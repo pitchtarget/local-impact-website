@@ -180,7 +180,7 @@ export const pageQuery = graphql`
           carousel {
             image {
               childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
+                fluid(maxWidth: 500, quality: 80) {
                   ...GatsbyImageSharpFluid
                 }
               }
