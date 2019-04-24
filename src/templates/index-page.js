@@ -218,6 +218,20 @@ export const pageQuery = graphql`
               }
             }
           }
+          select {
+            placeholder
+            sectors {
+              label
+              value
+            }
+          }
+          selectStep2 {
+            placeholder
+            roles {
+              label
+              value
+            }
+          }
         }
       }
     }

@@ -48,12 +48,12 @@ intro:
         consumatore finale
 form:
   title: I numeri del tuo business?
-  subtitle: Scopri quanto Local Impact possa essere rilevante per la tua attività.
+  subtitle: Scopri quanto Local Impact può essere rilevante per la tua attività.
   businessname: Nome azienda
   sector: Settore commerciale
   cta: Avanti
   titleStep2: Per ricevere un pricing
-  subtitleStep2: Scopri quanto Local Impact possa essere rilevante per la tua attività.
+  subtitleStep2: Scopri quanto Local Impact può essere rilevante per la tua attività.
   name: Nome e cognome
   email: Email
   role: Posizione aziendale
@@ -61,6 +61,24 @@ form:
   ctaStep2: Contattaci
   pos: Punti vendita
   image: /img/shop.svg
+  select:
+    placeholder: Settore commerciale
+    sectors:
+      - label: Agricoltura
+        value: agri
+      - label: ICT
+        value: ict
+      - label: Alimentazione e Bevande
+        value: food
+  selectStep2:
+    placeholder: Posizione aziendale
+    roles:
+      - label: Responsabile Marketing
+        value: marketing
+      - label: Responsabile Vendite
+        value: vendite
+      - label: Amministrazione
+        value: admin
 
 main:
   heading: Great coffee with no compromises
