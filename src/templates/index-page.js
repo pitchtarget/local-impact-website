@@ -88,11 +88,11 @@ export const IndexPageTemplate = ({
               </div>
             </div>
             <Features gridItems={intro.blurbs} />
-            <Carousel items={intro.carousel} />
           </div>
         </div>
       </div>
     </section>
+    <Carousel items={intro.carousel} />
   </div>
 )
 // <div className="columns">
