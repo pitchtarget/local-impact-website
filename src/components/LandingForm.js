@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import Slider from 'react-input-slider';
 import axios from "axios"
+import shop from "../img/shop.svg";
+
 
 const portalId = process.env.GATSBY_HUBSPOT_PORTAL_ID;
 const formGuid = process.env.GATSBY_HUBSPOT_FORM_GUID;
@@ -78,32 +80,29 @@ const LandingForm = class extends React.Component {
         <div className="columns is-desktop is-centered">
           {!isStep2Visible ?
             <div className="column is-6">
-              <h3 className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen" >
+              <h3 className="has-text-weight-semibold is-size-4-mobile is-size-3-widescreen" >
                 {form.title}
               </h3>
               <p className="has-text-weight-regular is-size-5-widescreen">
                 {form.subtitle}
               </p>
-              <form>
-                <h3 className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen" >
-                  <span>{stores}</span>
-                  <div
-                    style={{
-                      maxWidth: '50px',
-                      width: `100%`,
-                      display: 'inline-block',
-                    }}
-                  >
-                    <PreviewCompatibleImage
-                      imageInfo={{image: form.image}}
-                      style={{width: '40px'}}
-                    />
-                  </div>
-                  <small className="is-size-6">
-                    {form.pos}
-                  </small>
-                </h3>
-                <div>
+              <form className="form">
+                <div className="form--container">
+                  <h3 className="has-text-weight-semibold is-size-2" >
+                    <span>{stores}</span>
+                    <div
+                      style={{
+                        maxWidth: '50px',
+                        width: `100%`,
+                        display: 'inline-block',
+                      }}
+                    >
+                      <img src={shop} alt="shop" style={{ width: "40px" }} />
+                    </div>
+                    <small className="is-size-6">
+                      {form.pos}
+                    </small>
+                  </h3>
                   <Slider
                     axis="x"
                     xmax={200}
@@ -113,29 +112,34 @@ const LandingForm = class extends React.Component {
                     onChange={({ x }) => this.setState(state => ({ ...state, stores: x }))}
                     styles={{
                       track: {
-                        backgroundColor: 'blue'
+                        width: '80%',
+                        height: 3,
+                        backgroundColor: 'white'
                       },
                       active: {
-                        backgroundColor: 'red'
+                        backgroundColor: 'white'
                       },
                       thumb: {
-                        width: 20,
-                        height: 20
+                        width: 30,
+                        height: 30
                       }
                     }}
                   />
                 </div>
-                <div>
+                <div className="form--container">
                   <input
                     onChange={this.setGenericValue.bind(this, 'name')}
-                    className="input is-rounded is-large"
+                    className="input is-rounded is-medium"
                     type="text"
                     placeholder={form.businessname}
                   />
                 </div>
-                <div className="control">
-                  <div className="select is-rounded is-large">
-                    <select onChange={this.setGenericValue.bind(this, 'sector')}>
+                <div className="control form--container">
+                  <div className="select is-rounded is-medium" style={{width: '100%'}}>
+                    <select
+                      onChange={this.setGenericValue.bind(this, 'sector')}
+                      style={{width: 'inherit'}}
+                    >
                       <option value="">{form.select.placeholder}</option>
                       {form.select.sectors.map((s, i) => (
                         <option key={i} value={s.value}>{s.label}</option>
@@ -145,10 +149,8 @@ const LandingForm = class extends React.Component {
                 </div>
                 <button
                   onClick={this.toggleStep2.bind(this)}
-                  style={{
-                    padding: '1em 3em 1em 3em',
-                  }}
-                  className="button is-primary is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+                  style={{padding: '.5rem 4rem'}}
+                  className="button is-info is-large is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
                 >
                   {form.cta}
                 </button>
@@ -165,7 +167,7 @@ const LandingForm = class extends React.Component {
                 <div>
                   <input
                     onChange={this.setGenericValue.bind(this, 'fullname')}
-                    className="input is-rounded is-large"
+                    className="input is-rounded is-medium"
                     type="text"
                     placeholder={form.name}
                   />
@@ -173,13 +175,13 @@ const LandingForm = class extends React.Component {
                 <div>
                   <input
                     onChange={this.setGenericValue.bind(this, 'email')}
-                    className="input is-rounded is-large"
+                    className="input is-rounded is-medium"
                     type="text"
                     placeholder={form.email}
                   />
                 </div>
                 <div className="control">
-                  <div className="select is-rounded is-large">
+                  <div className="select is-rounded is-medium">
                     <select onChange={this.setGenericValue.bind(this, 'role')}>
                       <option value="">{form.selectStep2.placeholder}</option>
                       {form.selectStep2.roles.map((s, i) => (
@@ -192,9 +194,9 @@ const LandingForm = class extends React.Component {
                 <button
                   onClick={this.postFormData.bind(this)}
                   style={{
-                    padding: '1em 3em 1em 3em',
+                    padding: '.5rem 4rem',
                   }}
-                  className="button is-primary is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+                  className="button is-info is-large is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
                 >
                   {form.ctaStep2}
                 </button>

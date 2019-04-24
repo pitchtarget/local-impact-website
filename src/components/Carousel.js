@@ -61,7 +61,7 @@ const Carousel = class extends React.Component {
                     className="carousel--text"
                     style={rightContainerStyle}
                   >
-                    <h3 className="has-text-weight-semibold has-text-white is-size-3-tablet is-size-3-widescreen">
+                    <h3 className="has-text-weight-semibold has-text-white is-size-4-mobile is-size-3-widescreen">
                       {item.title}
                     </h3>
                     <p className="has-text-weight-regular has-text-white is-size-5-widescreen">
