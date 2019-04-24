@@ -60,7 +60,7 @@ form:
   tos: Accetto i termini e le condizioni per il trattamento dei dati personali
   ctaStep2: Contattaci
   pos: Punti vendita
-  image: /img/coffee.png
+  image: /img/shop.svg
 
 main:
   heading: Great coffee with no compromises

@@ -59,54 +59,65 @@ const LandingForm = class extends React.Component {
     const { loading, error, stores } = this.state;
     const { form } = this.props;
     return (
-      <section className="section has-text-centered">
-        <h3
-          className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen"
-        >
-          {form.title}
-        </h3>
-        <p className="has-text-weight-regular is-size-5-widescreen">
-          {form.subtitle}
-        </p>
-        <form>
-          <h3
-            className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen"
-          >
-            <span>{stores}</span>
-            <div
-              style={{
-                maxWidth: '50px',
-                width: `100%`,
-                display: 'inline-block',
-              }}
-            >
-              <PreviewCompatibleImage imageInfo={{image: form.image}} />
-            </div>
-            <small>
-              {form.pos}
-            </small>
-          </h3>
-          <Slider
-            axis="x"
-            xmax={200}
-            xmin={1}
-            xstep={1}
-            x={this.state.stores}
-            onChange={({ x }) => this.setState(state => ({ ...state, stores: x }))}
-            styles={{
-              track: {
-                backgroundColor: 'blue'
-              },
-              active: {
-                backgroundColor: 'red'
-              },
-              thumb: {
-                width: 20,
-                height: 20
-              }
-            }}
-          />
-        </form>
+      <section className="section has-text-centered section--form has-text-white">
+        <div className="columns is-desktop is-centered">
+          <div className="column is-6">
+
+            <h3 className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen" >
+              {form.title}
+            </h3>
+            <p className="has-text-weight-regular is-size-5-widescreen">
+              {form.subtitle}
+            </p>
+            <form>
+              <h3 className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen" >
+                <span>{stores}</span>
+                <div
+                  style={{
+                    maxWidth: '50px',
+                    width: `100%`,
+                    display: 'inline-block',
+                  }}
+                >
+                  <PreviewCompatibleImage
+                    imageInfo={{image: form.image}}
+                    style={{width: '40px'}}
+
+                  />
+                </div>
+                <small className="is-size-6">
+                  {form.pos}
+                </small>
+              </h3>
+              <div>
+                <Slider
+                  axis="x"
+                  xmax={200}
+                  xmin={1}
+                  xstep={1}
+                  x={this.state.stores}
+                  onChange={({ x }) => this.setState(state => ({ ...state, stores: x }))}
+                  styles={{
+                    track: {
+                      backgroundColor: 'blue'
+                    },
+                    active: {
+                      backgroundColor: 'red'
+                    },
+                    thumb: {
+                      width: 20,
+                      height: 20
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <input className="input is-rounded is-large" type="text" placeholder={form.businessname}/>
+              </div>
+            </form>
+
+          </div>
+        </div>
       </section>
     );
   }
