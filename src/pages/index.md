@@ -46,6 +46,22 @@ intro:
         in base ai dati demografici e alla prossimità del punto vendita
         in modo da essere il piu rilevanti possibili per il
         consumatore finale
+form:
+  title: I numeri del tuo business?
+  subtitle: Scopri quanto Local Impact possa essere rilevante per la tua attività.
+  businessname: Nome azienda
+  sector: Settore commerciale
+  cta: Avanti
+  titleStep2: Per ricevere un pricing
+  subtitleStep2: Scopri quanto Local Impact possa essere rilevante per la tua attività.
+  name: Nome e cognome
+  email: Email
+  role: Posizione aziendale
+  tos: Accetto i termini e le condizioni per il trattamento dei dati personali
+  ctaStep2: Contattaci
+  pos: Punti vendita
+  image: /img/coffee.png
+
 main:
   heading: Great coffee with no compromises
   description: >
