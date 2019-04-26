@@ -60,7 +60,7 @@ form:
   tos: Accetto i termini e le condizioni per il trattamento dei dati personali
   ctaStep2: Contattaci
   pos: Punti vendita
-  image: /img/shop.svg
+  image: /img/shop.png
   select:
     placeholder: Settore commerciale
     sectors:

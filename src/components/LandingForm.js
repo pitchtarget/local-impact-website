@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import Slider from 'react-input-slider';
 import axios from "axios"
-import shop from "../img/shop.svg";
-
 
 const portalId = process.env.GATSBY_HUBSPOT_PORTAL_ID;
 const formGuid = process.env.GATSBY_HUBSPOT_FORM_GUID;
@@ -80,7 +78,7 @@ const LandingForm = class extends React.Component {
         <div className="columns is-desktop is-centered">
           {!isStep2Visible ?
             <div className="column is-6">
-              <h3 className="has-text-weight-semibold is-size-4-mobile is-size-3-widescreen" >
+              <h3 className="has-text-weight-semibold is-size-4-mobile is-size-2-widescreen" >
                 {form.title}
               </h3>
               <p className="has-text-weight-regular is-size-5-widescreen">
@@ -92,12 +90,13 @@ const LandingForm = class extends React.Component {
                     <span>{stores}</span>
                     <div
                       style={{
-                        maxWidth: '50px',
+                        maxWidth: '30px',
                         width: `100%`,
                         display: 'inline-block',
+                        margin: '0 1rem',
                       }}
                     >
-                      <img src={shop} alt="shop" style={{ width: "40px" }} />
+                      <PreviewCompatibleImage imageInfo={{image: form.image}} />
                     </div>
                     <small className="is-size-6">
                       {form.pos}
@@ -106,7 +105,7 @@ const LandingForm = class extends React.Component {
                   <Slider
                     axis="x"
                     xmax={200}
-                    xmin={1}
+                    xmin={5}
                     xstep={1}
                     x={this.state.stores}
                     onChange={({ x }) => this.setState(state => ({ ...state, stores: x }))}
