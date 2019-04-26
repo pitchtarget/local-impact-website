@@ -170,5 +170,33 @@ $menu-label-color: $white-ter
 .form--container
   padding-bottom: 2rem
 
-
 @import "~bulma/bulma"
+
+input.is-large,
+.select.is-large select
+  font-size: $size-6 !important
+  height: 3.25rem
+
+.button.is-large
+  height: 4.45rem
+
+.input,
+.select select
+  color: $black
+
+.input::placeholder,
+.select select.select--unselected
+  color: transparentize($primary, .4)
+
+.select:not(.is-multiple):not(.is-loading)::after
+  border-color: transparentize($primary, .4)
+
+.select:not(.is-multiple):not(.is-loading):hover::after
+  border-color: transparentize(darken($primary, 25%), .4)
+
+input[type=checkbox]
+  -ms-transform: scale(2) /* IE */
+  -moz-transform: scale(2) /* FF */
+  -webkit-transform: scale(2) /* Safari and Chrome */
+  -o-transform: scale(2) /* Opera */
+  padding: 10px

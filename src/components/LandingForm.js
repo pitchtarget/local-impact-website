@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import Slider from 'react-input-slider';
+import { Link } from 'gatsby'
 import axios from "axios"
 
 const portalId = process.env.GATSBY_HUBSPOT_PORTAL_ID;
@@ -37,7 +38,7 @@ const LandingForm = class extends React.Component {
         {name: 'fullname', value: fullname}, // Nome e cognome
         {name: 'email', value: email}, // email
         {name: 'role', value: role}, // Posizione aziendale
-        // {name: 'tos_accepted', value: tosAccepted}, // Tos
+        {name: 'tos_accepted', value: tosAccepted}, // Tos
       ],
       // TODO GDPR ?
       // "legalConsentOptions":{ // Include this object when GDPR options are enabled
@@ -71,12 +72,13 @@ const LandingForm = class extends React.Component {
   }
 
   render() {
-    const { loading, error, stores, isStep2Visible } = this.state;
+    const { loading, error, stores, isStep2Visible, sector, role } = this.state;
     const { form } = this.props;
     return (
       <section className="section has-text-centered section--form has-text-white">
         <div className="columns is-desktop is-centered">
           {!isStep2Visible ?
+
             <div className="column is-6">
               <h3 className="has-text-weight-semibold is-size-4-mobile is-size-2-widescreen" >
                 {form.title}
@@ -128,18 +130,20 @@ const LandingForm = class extends React.Component {
                 <div className="form--container">
                   <input
                     onChange={this.setGenericValue.bind(this, 'name')}
-                    className="input is-rounded is-medium"
+                    className="input is-rounded is-large"
                     type="text"
                     placeholder={form.businessname}
                   />
                 </div>
                 <div className="control form--container">
-                  <div className="select is-rounded is-medium" style={{width: '100%'}}>
+                  <div className="select is-rounded is-large" style={{width: '100%'}}>
                     <select
                       onChange={this.setGenericValue.bind(this, 'sector')}
                       style={{width: 'inherit'}}
+                      className={!sector ? 'select--unselected' : undefined}
+                      required
                     >
-                      <option value="">{form.select.placeholder}</option>
+                      <option value="" >{form.select.placeholder}</option>
                       {form.select.sectors.map((s, i) => (
                         <option key={i} value={s.value}>{s.label}</option>
                       ))}
@@ -155,6 +159,7 @@ const LandingForm = class extends React.Component {
                 </button>
               </form>
             </div> :
+
             <div className="column is-6">
               <h3 className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen" >
                 {form.titleStep2}
@@ -162,32 +167,61 @@ const LandingForm = class extends React.Component {
               <p className="has-text-weight-regular is-size-5-widescreen">
                 {form.subtitleStep2}
               </p>
-              <form>
-                <div>
+              <form className="form">
+                <div className="form--container">
                   <input
                     onChange={this.setGenericValue.bind(this, 'fullname')}
-                    className="input is-rounded is-medium"
+                    className="input is-rounded is-large"
                     type="text"
                     placeholder={form.name}
                   />
                 </div>
-                <div>
+                <div className="form--container">
                   <input
                     onChange={this.setGenericValue.bind(this, 'email')}
-                    className="input is-rounded is-medium"
+                    className="input is-rounded is-large"
                     type="text"
                     placeholder={form.email}
                   />
                 </div>
-                <div className="control">
-                  <div className="select is-rounded is-medium">
-                    <select onChange={this.setGenericValue.bind(this, 'role')}>
+                <div className="control form--container">
+                  <div className="select is-rounded is-large" style={{width: '100%'}}>
+                    <select
+                      onChange={this.setGenericValue.bind(this, 'role')}
+                      style={{width: 'inherit'}}
+                      className={!role ? 'select--unselected' : undefined}
+                      required
+                    >
                       <option value="">{form.selectStep2.placeholder}</option>
                       {form.selectStep2.roles.map((s, i) => (
                         <option key={i} value={s.value}>{s.label}</option>
                       ))}
                     </select>
                   </div>
+                </div>
+
+                <div className="form--container">
+                  <label className="checkbox has-text-white">
+                    <input
+                      onChange={this.setGenericValue.bind(this, 'tosAccepted')}
+                      style={{marginRight: '1rem'}}
+                      className="checkbox"
+                      type="checkbox"
+                    />
+                    <small className='has-text-white'>
+                      {form.tos}
+                      <Link
+                        to="/"
+                        className="has-text-white"
+                        style={{
+                          marginLeft: '.5rem',
+                          textDecoration: 'underline',
+                        }}
+                      >
+                        {form.tosLink}
+                      </Link>
+                    </small>
+                  </label>
                 </div>
 
                 <button
@@ -221,6 +255,7 @@ LandingForm.propTypes = {
     email: PropTypes.string,
     role: PropTypes.string,
     tos: PropTypes.string,
+    tosLink: PropTypes.string,
     ctaStep2: PropTypes.string,
     pos: PropTypes.string,
     image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

@@ -57,7 +57,8 @@ form:
   name: Nome e cognome
   email: Email
   role: Posizione aziendale
-  tos: Accetto i termini e le condizioni per il trattamento dei dati personali
+  tos: Accetto i termini e le condizioni per il
+  tosLink: trattamento dei dati personali
   ctaStep2: Contattaci
   pos: Punti vendita
   image: /img/shop.png

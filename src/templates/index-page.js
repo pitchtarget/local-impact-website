@@ -209,6 +209,7 @@ export const pageQuery = graphql`
           email
           role
           tos
+          tosLink
           ctaStep2
           pos
           image {
