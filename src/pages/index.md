@@ -24,12 +24,28 @@ intro:
       title: Crea inserzioni che catturano l'attenzione
       text: >
         Local Impact crea delle inserzioni con informazioni geotargetizzate per aumentare la rilevanza verso i potenziali clienti che si trovano in prossimità dei punti vendita dove si trova il tuo brand
-  heading: What we offer
-  description: >
-    Kaldi is the ultimate spot for coffee lovers who want to learn about their
-    java’s origin and support the farmers that grew it. We take coffee
-    production, roasting and brewing seriously and we’re glad to pass that
-    knowledge to anyone. This is an edit via identity...
+  carousel:
+    - image: /img/screen-1.png
+      title: Carica la lista dei tuoi punti vendita
+      text: >
+        Il produttore carica nel pannello di Local Impact,
+        in formato excel, la lista dei rivenditori che partecipano
+        alla promozione (Ragione Sociale, Località, Raggio Km, Pagina
+        Facebook, altri dettagli)
+    - image: /img/screen-2.png
+      title: Personalizza i messaggi con i template
+      text: >
+        Il produttore o l'agenzia incaricata delle attività di
+        marketing genera le creatività con gli "elementi segnaposto"
+        che verranno sostituiti dal sistema con i dati prelevati dalla
+        lista excel
+    - image: /img/screen-3.png
+      title: Definisci il tuo target al resto ci pensiamo noi
+      text: >
+        Le inserzioni verranno promosse al target prescelto
+        in base ai dati demografici e alla prossimità del punto vendita
+        in modo da essere il piu rilevanti possibili per il
+        consumatore finale
 main:
   heading: Great coffee with no compromises
   description: >

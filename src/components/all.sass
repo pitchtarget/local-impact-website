@@ -1,5 +1,6 @@
-@import "~bulma/sass/utilities/initial-variables.sass"
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900')
+@import "~bulma/sass/utilities/initial-variables.sass"
+@import "~bulma-carousel/dist/css/bulma-carousel.min.css"
 
 // Config vars
 // Kaldi logo brand color: #FD461E
@@ -135,5 +136,25 @@ $menu-label-color: $white-ter
     height: 1em
     vertical-align: middle
     display: inline
+
+*
+  outline: none !important
+
+.carousel--bg
+  justify-content: center !important
+  background-color: $black
+
+.carousel--container
+  min-height: 500px
+
+.carousel--title
+  font-size: $size-3
+  line-height: 1
+  font-weight: $weight-semibold
+  margin-bottom: 1rem
+
+.carousel--description
+  font-size: $size-5
+  font-weight: $weight-regular
 
 @import "~bulma/bulma"
