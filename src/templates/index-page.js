@@ -175,6 +175,7 @@ export const pageQuery = graphql`
                 }
               }
             }
+            title
             text
           }
           carousel {
