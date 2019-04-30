@@ -76,7 +76,7 @@ const LandingForm = class extends React.Component {
     const { form } = this.props;
     return (
       <section className="section has-text-centered section--form has-text-white">
-        <div className="columns is-desktop is-centered">
+        <div className="columns is-centered">
           {!isStep2Visible ?
 
             <div className="column is-6">
