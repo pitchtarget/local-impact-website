@@ -14,6 +14,7 @@ const LandingForm = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      tosAccepted: false,
       loading: false,
       error: false,
       stores: 1,
@@ -63,8 +64,7 @@ const LandingForm = class extends React.Component {
   }
 
   setGenericValue(prop, evt) {
-    console.log(prop, evt.target.value)
-    this.setState({[prop]: evt.target.value});
+    this.setState({[prop]: prop === 'tosAccepted' ? !this.state.tosAccepted : evt.target.value});
   }
 
   toggleStep2(e) {
@@ -207,6 +207,7 @@ const LandingForm = class extends React.Component {
                       style={{marginRight: '1rem'}}
                       className="checkbox"
                       type="checkbox"
+                      checked={this.state.tosAccepted}
                     />
                     <small className='has-text-white'>
                       {form.tos}
