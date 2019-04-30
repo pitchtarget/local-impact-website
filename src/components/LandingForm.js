@@ -17,7 +17,8 @@ const LandingForm = class extends React.Component {
       loading: false,
       error: false,
       stores: 1,
-      isStep2Visible: false
+      isStep2Visible: false,
+      tosAccepted: false,
     };
   }
 
@@ -63,8 +64,9 @@ const LandingForm = class extends React.Component {
   }
 
   setGenericValue(prop, evt) {
-    console.log(prop, evt.target.value)
-    this.setState({[prop]: evt.target.value});
+    const value = prop === 'tosAccepted' ? evt : evt.target.value;
+    console.log(prop, value)
+    this.setState({[prop]: value});
   }
 
   toggleStep2(e) {
@@ -72,11 +74,11 @@ const LandingForm = class extends React.Component {
   }
 
   render() {
-    const { loading, error, stores, isStep2Visible, sector, role } = this.state;
+    const { loading, error, stores, isStep2Visible, sector, role, tosAccepted } = this.state;
     const { form } = this.props;
     return (
       <section className="section has-text-centered section--form has-text-white">
-        <div className="columns is-desktop is-centered">
+        <div className="columns is-centered">
           {!isStep2Visible ?
 
             <div className="column is-6">
@@ -202,12 +204,16 @@ const LandingForm = class extends React.Component {
 
                 <div className="form--container">
                   <label className="checkbox has-text-white">
-                    <input
-                      onChange={this.setGenericValue.bind(this, 'tosAccepted')}
-                      style={{marginRight: '1rem'}}
-                      className="checkbox"
-                      type="checkbox"
-                    />
+                    <span
+                      className="icon is-medium"
+                      style={{cursor: 'pointer'}}
+                      onClick={this.setGenericValue.bind(this, 'tosAccepted', tosAccepted ? false : true)}
+                    >
+                      { tosAccepted
+                        ? <i className="fas fa-check-square"></i>
+                        : <i className="fas fa-square"></i>
+                      }
+                    </span>
                     <small className='has-text-white'>
                       {form.tos}
                       <Link
