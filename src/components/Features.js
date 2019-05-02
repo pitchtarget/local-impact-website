@@ -21,7 +21,7 @@ const FeatureGrid = ({ gridItems }) => (
           <h3 className="has-text-centered is-size-4-touch is-size-3-desktop has-text-weight-semibold" >
             {item.title}
           </h3>
-          <p className="has-text-centered">
+          <p className="has-text-centered text-description">
             {item.text}
           </p>
         </section>
