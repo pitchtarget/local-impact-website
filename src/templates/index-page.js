@@ -7,6 +7,7 @@ import Layout from '../components/Layout'
 import Features from '../components/Features'
 import Carousel from '../components/Carousel'
 import LandingForm from '../components/LandingForm'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 // import BlogRoll from '../components/BlogRoll'
 
 export const IndexPageTemplate = ({
@@ -18,6 +19,7 @@ export const IndexPageTemplate = ({
   description,
   intro,
   form,
+  useCase,
   cta
 }) => (
   <div>
@@ -95,6 +97,29 @@ export const IndexPageTemplate = ({
       </div>
     </section>
     <Carousel items={intro.carousel} />
+    <section className="section section--use-case">
+      <div className="container">
+        <div className="columns">
+          <div
+            style={{margin: 'auto'}}
+            className="column is-3 is-offset-1 is-desktop"
+          >
+            <PreviewCompatibleImage imageInfo={useCase.image} />
+          </div>
+          <div className="column is-7 is-desktop">
+            <h3
+              style={{marginBottom: '1rem'}}
+              className="is-size-5-touch is-size-4-desktop has-text-weight-semibold"
+            >
+              {useCase.title}
+            </h3>
+            <p style={{fontStyle: 'italic'}} className="text-description">
+              {useCase.text}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
     <LandingForm form={form} />
   </div>
 )
@@ -126,6 +151,11 @@ IndexPageTemplate.propTypes = {
     blurbs: PropTypes.array,
     carousel: PropTypes.array,
   }),
+  useCase: PropTypes.shape({
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
   form: PropTypes.object,
 }
 
@@ -140,6 +170,7 @@ const IndexPage = ({ data }) => {
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         intro={frontmatter.intro}
+        useCase={frontmatter.useCase}
         form={frontmatter.form}
       />
     </Layout>
@@ -196,6 +227,17 @@ export const pageQuery = graphql`
           }
           heading
           description
+        }
+        useCase {
+          title
+          text
+          image {
+            childImageSharp {
+              fluid(maxWidth: 240, quality: 64) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         form {
           title

@@ -46,6 +46,11 @@ intro:
         in base ai dati demografici e alla prossimità del punto vendita
         in modo da essere il piu rilevanti possibili per il
         consumatore finale
+useCase:
+  image: /img/logo_chimento.png
+  title: Campagne, target e inserzioni personalizzate per 50 punti vendita
+  text: >
+    L’obiettivo era quello di premiare alcuni tra i migliori clienti dell’azienda con una soluzione che veicolasse l’interesse degli utenti direttamente verso la gioielleria, personalizzando le inserzioni sulla base dei prodotti realmente disponibili presso il punto vendita, e al contempo consentisse a Chimento di acquisire i contatti di utenti interessati.
 form:
   title: I numeri del tuo business?
   subtitle: Scopri quanto Local Impact può essere rilevante per la tua attività.
