@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import Carousel from '../components/Carousel'
-import LandingForm from '../components/LandingForm'
+// import LandingForm from '../components/LandingForm'
 // import BlogRoll from '../components/BlogRoll'
 
 export const IndexPageTemplate = ({
@@ -95,7 +95,27 @@ export const IndexPageTemplate = ({
       </div>
     </section>
     <Carousel items={intro.carousel} />
-    <LandingForm form={form} />
+    <section className="section has-text-centered section--form has-text-white">
+      <div className="columns is-centered">
+        <div className="column is-6">
+          <h3 className="has-text-weight-semibold is-size-2" >
+            Prendiamoci un caffè
+          </h3>
+          <p className="has-text-weight-regular is-size-5-widescreen">
+            Mettiti in contatto con il nostro team per scoprire quanto
+            <strong className="has-text-white"> Local Impact </strong>
+            può essere rilevante <wbr/> per i tuoi punti vendita e per il tuo business.
+          </p>
+          <a
+            style={{padding: '.5rem 4rem', marginTop: '2rem'}}
+            className="button is-info is-large is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+            href="mailto:financial@pitchtarget.com"
+          >
+            Contattaci
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
 )
 // <div className="columns">
