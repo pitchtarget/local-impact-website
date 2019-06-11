@@ -1,27 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
-import bulmaCarousel from 'bulma-carousel'
+// import bulmaCarousel from 'bulma-carousel'
+
+// Requiring function causes error during builds
+// as the code tries to reference window
+
+const bulmaCarousel = (() => {
+    if (typeof window !== 'undefined') {
+        return require('bulma-carousel')
+    }
+})()
 
 const Carousel = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: window.innerWidth,
+      width: 0,
     };
-  }
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
-  }
-  handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
   }
 
   componentDidMount() {
-    bulmaCarousel.attach('#carousel-demo')
+    this.handleWindowSizeChange() // Set width
+    window.addEventListener('resize', this.handleWindowSizeChange)
+    bulmaCarousel.attach('#carousel-demo');
+  }
+
+  componentWillMount() {
+    // Don’t use this as the API is deprecated
+  }
+
+  // make sure to remove the listener
+  // when the component is not mounted anymore
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange)
+  }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth })
   }
 
   render() {
