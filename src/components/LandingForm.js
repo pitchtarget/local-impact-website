@@ -33,33 +33,31 @@ const LandingForm = class extends React.Component {
     const res = await axios.post(formUrl, {
       // TODO The name for each field must match the name of the property from the Contact Properties API.
       fields: [
-        {name: 'company_size', value: company_size}, // Stores number
-        {name: 'company', value: company}, // nome azienda
-        {name: 'industry', value: industry}, // Settore commerciale
-        {name: 'name', value: name}, // Nome e cognome
+        // {name: 'company_size', value: company_size}, // Stores number
+        // {name: 'company', value: company}, // nome azienda
+        // {name: 'industry', value: industry}, // Settore commerciale
+        // {name: 'name', value: name}, // Nome e cognome
         {name: 'email', value: email}, // email
-        {name: 'jobtitle', value: jobtitle}, // Posizione aziendale
-        {name: 'tos_accepted', value: tosAccepted}, // Tos
+        // {name: 'jobtitle', value: jobtitle}, // Posizione aziendale
+        // {name: 'tos_accepted', value: tosAccepted}, // Tos
       ],
-      legalConsentOptions: { // Include this object when GDPR options are enabled
-        consent: {
-          consentToProcess: true,
-          text: 'I agree to allow Addictive s.r.l to store and process my personal data.',
-          communications: [
-            {
-              value: true,
-              subscriptionTypeId: 999,
-              text: 'I agree to receive marketing communications from Addictive s.r.l'
-            }
-          ]
-        }
-      }
+      // legalConsentOptions: { // Include this object when GDPR options are enabled
+      //   consent: {
+      //     consentToProcess: true,
+      //     text: 'I agree to allow Addictive s.r.l to store and process my personal data.',
+      //     communications: [
+      //       {
+      //         value: true,
+      //         subscriptionTypeId: 999,
+      //         text: 'I agree to receive marketing communications from Addictive s.r.l'
+      //       }
+      //     ]
+      //   }
+      // }
     }).catch(error => {
-      debugger;
       console.error(error);
     });
-    debugger;
-    console.log(res);
+    console.log(res.data);
     // TODO do something with res
   }
 
