@@ -17,31 +17,32 @@ const LandingForm = class extends React.Component {
       tosAccepted: false,
       loading: false,
       error: false,
-      stores: 1,
-      isStep2Visible: false
+      isStep2Visible: false,
+      company_size: 1,
+      company: '',
+      industry: undefined,
+      email: '',
+      name: '',
+      jobtitle: undefined
     };
   }
 
   async postFormData() {
-    const { stores, name, sector, fullname, email, role, tosAccepted } = this.state;
+    const { company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
     this.setState({ loading: true });
     debugger;
-
-    // TODO remove return
-    return;
 
     const res = await axios.post(formUrl, {
       // TODO The name for each field must match the name of the property from the Contact Properties API.
       fields: [
-        {name: 'stores', value: stores}, // Stores number
-        {name: 'name', value: name}, // nome azienda
-        {name: 'sector', value: sector}, // Settore commerciale
-        {name: 'fullname', value: fullname}, // Nome e cognome
+        {name: 'company_size', value: company_size}, // Stores number
+        {name: 'company', value: company}, // nome azienda
+        {name: 'industry', value: industry}, // Settore commerciale
+        {name: 'name', value: name}, // Nome e cognome
         {name: 'email', value: email}, // email
-        {name: 'role', value: role}, // Posizione aziendale
+        {name: 'industry', value: industry}, // Posizione aziendale
         {name: 'tos_accepted', value: tosAccepted}, // Tos
       ],
-      // TODO GDPR ?
       // "legalConsentOptions":{ // Include this object when GDPR options are enabled
       //   "consent":{
       //     "consentToProcess":true,
@@ -54,11 +55,12 @@ const LandingForm = class extends React.Component {
       //       }
       //     ]
       //   }
-      // }
+      }
     }).catch(err => {
       debugger;
       // TODO catch errors
     });
+    console.log(res);
     debugger;
     // TODO do something with res
   }
@@ -72,7 +74,7 @@ const LandingForm = class extends React.Component {
   }
 
   render() {
-    const { loading, error, stores, isStep2Visible, sector, role } = this.state;
+    const { loading, error, isStep2Visible, company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
     const { form } = this.props;
     return (
       <section className="section has-text-centered section--form has-text-white">
@@ -89,7 +91,7 @@ const LandingForm = class extends React.Component {
               <form className="form">
                 <div className="form--container">
                   <h3 className="has-text-weight-semibold is-size-2" >
-                    <span>{stores}</span>
+                    <span>{company_size}</span>
                     <div
                       style={{
                         maxWidth: '30px',
@@ -109,8 +111,8 @@ const LandingForm = class extends React.Component {
                     xmax={200}
                     xmin={5}
                     xstep={1}
-                    x={this.state.stores}
-                    onChange={({ x }) => this.setState(state => ({ ...state, stores: x }))}
+                    x={this.state.company_size}
+                    onChange={({ x }) => this.setState(state => ({ ...state, company_size: x }))}
                     styles={{
                       track: {
                         width: '80%',
@@ -129,7 +131,8 @@ const LandingForm = class extends React.Component {
                 </div>
                 <div className="form--container">
                   <input
-                    onChange={this.setGenericValue.bind(this, 'name')}
+                    value={company}
+                    onChange={this.setGenericValue.bind(this, 'company')}
                     className="input is-rounded is-large"
                     type="text"
                     placeholder={form.businessname}
@@ -138,9 +141,10 @@ const LandingForm = class extends React.Component {
                 <div className="control form--container">
                   <div className="select is-rounded is-large" style={{width: '100%'}}>
                     <select
-                      onChange={this.setGenericValue.bind(this, 'sector')}
+                      value={industry}
+                      onChange={this.setGenericValue.bind(this, 'industry')}
                       style={{width: 'inherit'}}
-                      className={!sector ? 'select--unselected' : undefined}
+                      className={!industry ? 'select--unselected' : undefined}
                       required
                     >
                       <option value="" >{form.select.placeholder}</option>
@@ -170,7 +174,8 @@ const LandingForm = class extends React.Component {
               <form className="form">
                 <div className="form--container">
                   <input
-                    onChange={this.setGenericValue.bind(this, 'fullname')}
+                    value={name}
+                    onChange={this.setGenericValue.bind(this, 'name')}
                     className="input is-rounded is-large"
                     type="text"
                     placeholder={form.name}
@@ -178,6 +183,7 @@ const LandingForm = class extends React.Component {
                 </div>
                 <div className="form--container">
                   <input
+                    value={email}
                     onChange={this.setGenericValue.bind(this, 'email')}
                     className="input is-rounded is-large"
                     type="text"
@@ -187,9 +193,10 @@ const LandingForm = class extends React.Component {
                 <div className="control form--container">
                   <div className="select is-rounded is-large" style={{width: '100%'}}>
                     <select
-                      onChange={this.setGenericValue.bind(this, 'role')}
+                      value={jobtitle}
+                      onChange={this.setGenericValue.bind(this, 'jobtitle')}
                       style={{width: 'inherit'}}
-                      className={!role ? 'select--unselected' : undefined}
+                      className={!jobtitle ? 'select--unselected' : undefined}
                       required
                     >
                       <option value="">{form.selectStep2.placeholder}</option>
