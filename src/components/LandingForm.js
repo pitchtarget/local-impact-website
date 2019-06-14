@@ -30,8 +30,6 @@ const LandingForm = class extends React.Component {
   async postFormData() {
     const { company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
     this.setState({ loading: true });
-    debugger;
-
     const res = await axios.post(formUrl, {
       // TODO The name for each field must match the name of the property from the Contact Properties API.
       fields: [
@@ -40,28 +38,28 @@ const LandingForm = class extends React.Component {
         {name: 'industry', value: industry}, // Settore commerciale
         {name: 'name', value: name}, // Nome e cognome
         {name: 'email', value: email}, // email
-        {name: 'industry', value: industry}, // Posizione aziendale
+        {name: 'jobtitle', value: jobtitle}, // Posizione aziendale
         {name: 'tos_accepted', value: tosAccepted}, // Tos
       ],
-      // "legalConsentOptions":{ // Include this object when GDPR options are enabled
-      //   "consent":{
-      //     "consentToProcess":true,
-      //     "text":"I agree to allow Example Company to store and process my personal data.",
-      //     "communications":[
-      //       {
-      //         "value":true,
-      //         "subscriptionTypeId":999,
-      //         "text":"I agree to receive marketing communications from Example Company."
-      //       }
-      //     ]
-      //   }
+      legalConsentOptions: { // Include this object when GDPR options are enabled
+        consent: {
+          consentToProcess: true,
+          text: 'I agree to allow Addictive s.r.l to store and process my personal data.',
+          communications: [
+            {
+              value: true,
+              subscriptionTypeId: 999,
+              text: 'I agree to receive marketing communications from Addictive s.r.l'
+            }
+          ]
+        }
       }
-    }).catch(err => {
+    }).catch(error => {
       debugger;
-      // TODO catch errors
+      console.error(error);
     });
-    console.log(res);
     debugger;
+    console.log(res);
     // TODO do something with res
   }
 
