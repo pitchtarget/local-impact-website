@@ -2,8 +2,6 @@ var proxy = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
-    hubspotFormGuid: process.env.HUBSPOT_FORM_GUID,
-    hubspotPortalId: process.env.HUBSPOT_PORTAL_ID,
     title: 'Local Impact',
     description:
       'Local Impact è una piattaforma che automatizza le tue inserzioni su Facebook e sincronizza la tua strategia online con i punti vendita fisici.',
