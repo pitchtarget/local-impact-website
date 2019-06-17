@@ -5,8 +5,6 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
-import Carousel from '../components/Carousel'
-import LandingForm from '../components/LandingForm'
 // import BlogRoll from '../components/BlogRoll'
 
 export const IndexPageTemplate = ({
@@ -17,7 +15,6 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
-  form,
   cta
 }) => (
   <div>
@@ -53,7 +50,7 @@ export const IndexPageTemplate = ({
             >
               {title}
             </h1>
-            <h2
+            <h3
               className="has-text-weight-semibold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
               style={{
                 lineHeight: '1',
@@ -62,7 +59,7 @@ export const IndexPageTemplate = ({
               }}
             >
               {subheading}
-            </h2>
+            </h3>
             <a
               href="#features"
               style={{
@@ -88,14 +85,12 @@ export const IndexPageTemplate = ({
                   </h3>
                 </div>
               </div>
+              <Features gridItems={intro.blurbs} />
             </div>
-            <Features gridItems={intro.blurbs} />
           </div>
         </div>
       </div>
     </section>
-    <Carousel items={intro.carousel} />
-    <LandingForm form={form} />
   </div>
 )
 // <div className="columns">
@@ -124,13 +119,12 @@ IndexPageTemplate.propTypes = {
   subheading: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
-    carousel: PropTypes.array,
   }),
-  form: PropTypes.object,
 }
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
+
   return (
     <Layout>
       <IndexPageTemplate
@@ -140,7 +134,6 @@ const IndexPage = ({ data }) => {
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         intro={frontmatter.intro}
-        form={frontmatter.form}
       />
     </Layout>
   )
@@ -180,59 +173,11 @@ export const pageQuery = graphql`
                 }
               }
             }
-            title
             text
-          }
-          carousel {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 500, quality: 80) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
             title
-            text
           }
           heading
           description
-        }
-        form {
-          title
-          subtitle
-          businessname
-          sector
-          cta
-          titleStep2
-          subtitleStep2
-          name
-          email
-          role
-          tos
-          tosLink
-          ctaStep2
-          pos
-          image {
-            childImageSharp {
-              fluid(maxWidth: 240, quality: 64) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          select {
-            placeholder
-            sectors {
-              label
-              value
-            }
-          }
-          selectStep2 {
-            placeholder
-            roles {
-              label
-              value
-            }
-          }
         }
       }
     }
