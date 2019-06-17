@@ -1,5 +1,6 @@
-@import "~bulma/sass/utilities/initial-variables.sass"
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900')
+@import "~bulma/sass/utilities/initial-variables.sass"
+@import "~bulma-carousel/dist/css/bulma-carousel.min.css"
 
 // Config vars
 // Kaldi logo brand color: #FD461E
@@ -10,6 +11,7 @@ $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 $body-color: #333
 $black: #372F41
+$info: $black
 
 $family-primary: 'Roboto'
 $weight-bold: 900
@@ -136,4 +138,64 @@ $menu-label-color: $white-ter
     vertical-align: middle
     display: inline
 
+*
+  outline: none !important
+
+// Carousel
+.carousel--bg
+  justify-content: center !important
+  background-color: $black
+
+.carousel--container
+  min-height: 500px
+
+.carousel--title
+  font-size: $size-3
+  line-height: 1
+  font-weight: $weight-semibold
+  margin-bottom: 1rem
+
+.carousel--description
+  font-size: $size-5
+  font-weight: $weight-regular
+
+// form
+.section--form
+  min-height: 50vh
+  background: linear-gradient(45deg, rgba(243,84,76,1)0,rgba(224,70,88,1) 100%)
+
+.form
+  padding: 1rem
+
+.form--container
+  padding-bottom: 2rem
+
 @import "~bulma/bulma"
+
+input.is-large,
+.select.is-large select
+  font-size: $size-6 !important
+  height: 3.25rem
+
+.button.is-large
+  height: 4.45rem
+
+.input,
+.select select
+  color: $black
+
+.input::placeholder,
+.select select.select--unselected
+  color: transparentize($primary, .4)
+
+.select:not(.is-multiple):not(.is-loading)::after
+  border-color: transparentize($primary, .4)
+
+.select:not(.is-multiple):not(.is-loading):hover::after
+  border-color: transparentize(darken($primary, 25%), .4)
+
+input[type=checkbox]
+  -ms-transform: scale(1.5) /* IE */
+  -moz-transform: scale(1.5) /* FF */
+  -webkit-transform: scale(1.5) /* Safari and Chrome */
+  -o-transform: scale(1.5) /* Opera */
