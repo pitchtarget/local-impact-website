@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import Slider from 'react-input-slider';
-import { Link } from 'gatsby'
 import axios from "axios"
 
 const portalId = process.env.GATSBY_HUBSPOT_PORTAL_ID;
@@ -30,35 +29,40 @@ const LandingForm = class extends React.Component {
   async postFormData() {
     const { company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
     this.setState({ loading: true });
-    const res = await axios.post(formUrl, {
-      // TODO The name for each field must match the name of the property from the Contact Properties API.
-      fields: [
-        // {name: 'company_size', value: company_size}, // Stores number
-        // {name: 'company', value: company}, // nome azienda
-        // {name: 'industry', value: industry}, // Settore commerciale
-        // {name: 'name', value: name}, // Nome e cognome
-        {name: 'email', value: email}, // email
-        // {name: 'jobtitle', value: jobtitle}, // Posizione aziendale
-        // {name: 'tos_accepted', value: tosAccepted}, // Tos
-      ],
-      // legalConsentOptions: { // Include this object when GDPR options are enabled
-      //   consent: {
-      //     consentToProcess: true,
-      //     text: 'I agree to allow Addictive s.r.l to store and process my personal data.',
-      //     communications: [
-      //       {
-      //         value: true,
-      //         subscriptionTypeId: 999,
-      //         text: 'I agree to receive marketing communications from Addictive s.r.l'
-      //       }
-      //     ]
-      //   }
-      // }
-    }).catch(error => {
-      console.error(error);
-    });
-    console.log(res.data);
-    // TODO do something with res
+    try {
+      const res = await axios.post(formUrl, {
+        fields: [
+          {name: 'company_size', value: company_size}, // Stores number
+          {name: 'company', value: company}, // nome azienda
+          {name: 'industry', value: industry}, // Settore commerciale
+          {name: 'firstname', value: name}, // Nome e cognome
+          {name: 'email', value: email}, // email
+          {name: 'jobtitle', value: jobtitle}, // Posizione aziendale
+        ],
+        legalConsentOptions: { // Include this object when GDPR options are enabled
+          consent: {
+            consentToProcess: true,
+            text: `Facendo clic sul pulsante qui sotto, si consente a Omniaweb Italia di archiviare e utilizzare le informazioni per fornire il contenuto richiesto.`,
+            communications: [
+              {
+                value: tosAccepted,
+                subscriptionTypeId: 999,
+                text: `Accetto di ricevere comunicazioni da Omniaweb Italia.`
+              }
+            ]
+          }
+        }
+      })
+      debugger;
+      if (res && res.data) {
+        console.log(res.data);
+        this.setState({inlineMessage: res.data.inlineMessage});
+      }
+      // TODO do something with res
+    } catch (e) {
+      debugger;
+      console.error(e);
+    }
   }
 
   setGenericValue(prop, evt) {
@@ -70,12 +74,15 @@ const LandingForm = class extends React.Component {
   }
 
   render() {
-    const { loading, error, isStep2Visible, company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
+    const { isStep2Visible, inlineMessage, company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
     const { form } = this.props;
     return (
       <section className="section has-text-centered section--form has-text-white">
         <div className="columns is-centered">
-          {!isStep2Visible ?
+          {inlineMessage &&
+            <h3>{inlineMessage}</h3>
+          }
+          {!inlineMessage && !isStep2Visible ?
 
             <div className="column is-6">
               <h3 className="has-text-weight-semibold is-size-4-mobile is-size-2-widescreen" >
@@ -210,22 +217,32 @@ const LandingForm = class extends React.Component {
                       style={{marginRight: '1rem'}}
                       className="checkbox"
                       type="checkbox"
-                      checked={this.state.tosAccepted}
+                      checked={tosAccepted}
                     />
                     <small className='has-text-white'>
                       {form.tos}
-                      <Link
-                        to="/"
-                        className="has-text-white"
-                        style={{
-                          marginLeft: '.5rem',
-                          textDecoration: 'underline',
-                        }}
-                      >
-                        {form.tosLink}
-                      </Link>
                     </small>
                   </label>
+
+                  <p className='has-text-white'>
+                    {form.tos2}
+                    <a
+                      href="https://www.iubenda.com/privacy-policy/119556"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="has-text-white"
+                      style={{
+                        marginLeft: '.5rem',
+                        textDecoration: 'underline',
+                      }}
+                    >
+                      {form.tosLink}
+                    </a>
+                     {form.tos2PostLink}
+                  </p>
+                  <p className='has-text-white'>
+                    {form.tos3}
+                  </p>
                 </div>
 
                 <button
@@ -259,7 +276,10 @@ LandingForm.propTypes = {
     email: PropTypes.string,
     role: PropTypes.string,
     tos: PropTypes.string,
+    tos2: PropTypes.string,
+    tos3: PropTypes.string,
     tosLink: PropTypes.string,
+    tos2PostLink: PropTypes.string,
     ctaStep2: PropTypes.string,
     pos: PropTypes.string,
     image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

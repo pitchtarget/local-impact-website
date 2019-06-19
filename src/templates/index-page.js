@@ -209,6 +209,9 @@ export const pageQuery = graphql`
           email
           role
           tos
+          tos2
+          tos3
+          tos2PostLink
           tosLink
           ctaStep2
           pos

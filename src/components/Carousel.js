@@ -60,7 +60,7 @@ const Carousel = class extends React.Component {
         className="hero is-medium has-carousel carousel--bg"
         style={{minHeight: isMobile ? '80vh' : '600px'}}
       >
-        <div className={!isMobile && "container is-fluid"} >
+        <div className={!isMobile ? "container is-fluid" : ''} >
           <div id="carousel-demo" className="hero-carousel carousel--container" >
             {items.map((item, i) => (
               <div key={item.title} className={`item-${i} columns is-vcentered`}>

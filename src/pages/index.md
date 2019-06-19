@@ -57,8 +57,11 @@ form:
   name: Nome e cognome
   email: Email
   role: Posizione aziendale
-  tos: Accetto i termini e le condizioni per il
-  tosLink: trattamento dei dati personali
+  tos: Accetto di ricevere comunicazioni da Omniaweb Italia
+  tos2: Dichiaro di aver letto
+  tosLink: l'informativa privacy 
+  tos2PostLink: e di prestare il mio consenso al trattamento dei dati per i fini indicati.
+  tos3: Facendo clic sul pulsante qui sotto, si consente a Omniaweb Italia di archiviare e utilizzare le informazioni per fornire il contenuto richiesto.
   ctaStep2: Contattaci
   pos: Punti vendita
   image: /img/shop.png
