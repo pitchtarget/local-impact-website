@@ -6,7 +6,6 @@ import axios from "axios"
 
 const portalId = process.env.GATSBY_HUBSPOT_PORTAL_ID;
 const formGuid = process.env.GATSBY_HUBSPOT_FORM_GUID;
-// const formUrl = `https://forms.hubspot.com/uploads/form/v2/${portalId}/${formGuid}`;
 const formUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
 
 const LandingForm = class extends React.Component {
@@ -26,7 +25,9 @@ const LandingForm = class extends React.Component {
     };
   }
 
-  async postFormData() {
+  async postFormData(e) {
+    e.preventDefault();
+
     const { company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
     this.setState({ loading: true });
     try {
@@ -52,16 +53,13 @@ const LandingForm = class extends React.Component {
             ]
           }
         }
-      })
-      debugger;
+      });
       if (res && res.data) {
         console.log(res.data);
         this.setState({inlineMessage: res.data.inlineMessage});
       }
-      // TODO do something with res
-    } catch (e) {
-      debugger;
-      console.error(e);
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -76,187 +74,194 @@ const LandingForm = class extends React.Component {
   render() {
     const { isStep2Visible, inlineMessage, company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
     const { form } = this.props;
+    const step1 = (
+      <div className="column is-6">
+        <h3 className="has-text-weight-semibold is-size-4-mobile is-size-2-widescreen" >
+          {form.title}
+        </h3>
+        <p className="has-text-weight-regular is-size-5-widescreen">
+          {form.subtitle}
+        </p>
+        <form className="form">
+          <div className="form--container">
+            <h3 className="has-text-weight-semibold is-size-2" >
+              <span>{company_size}</span>
+              <div
+                style={{
+                  maxWidth: '30px',
+                  width: `100%`,
+                  display: 'inline-block',
+                  margin: '0 1rem',
+                }}
+              >
+                <PreviewCompatibleImage imageInfo={{image: form.image}} />
+              </div>
+              <small className="is-size-6">
+                {form.pos}
+              </small>
+            </h3>
+            <Slider
+              axis="x"
+              xmax={200}
+              xmin={5}
+              xstep={1}
+              x={this.state.company_size}
+              onChange={({ x }) => this.setState(state => ({ ...state, company_size: x }))}
+              styles={{
+                track: {
+                  width: '80%',
+                  height: 3,
+                  backgroundColor: 'white'
+                },
+                active: {
+                  backgroundColor: 'white'
+                },
+                thumb: {
+                  width: 30,
+                  height: 30
+                }
+              }}
+            />
+          </div>
+          <div className="form--container">
+            <input
+              value={company}
+              onChange={this.setGenericValue.bind(this, 'company')}
+              className="input is-rounded is-large"
+              type="text"
+              placeholder={form.businessname}
+            />
+          </div>
+          <div className="control form--container">
+            <div className="select is-rounded is-large" style={{width: '100%'}}>
+              <select
+                value={industry}
+                onChange={this.setGenericValue.bind(this, 'industry')}
+                style={{width: 'inherit'}}
+                className={!industry ? 'select--unselected' : undefined}
+                required
+              >
+                <option value="" >{form.select.placeholder}</option>
+                {form.select.sectors.map((s, i) => (
+                  <option key={i} value={s.value}>{s.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <button
+            onClick={this.toggleStep2.bind(this)}
+            style={{padding: '.5rem 4rem'}}
+            className="button is-info is-large is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+          >
+            {form.cta}
+          </button>
+        </form>
+      </div>
+    );
+    const step2 = (
+      <div className="column is-6">
+        <h3 className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen" >
+          {form.titleStep2}
+        </h3>
+        <p className="has-text-weight-regular is-size-5-widescreen">
+          {form.subtitleStep2}
+        </p>
+        <form className="form">
+          <div className="form--container">
+            <input
+              value={name}
+              onChange={this.setGenericValue.bind(this, 'name')}
+              className="input is-rounded is-large"
+              type="text"
+              placeholder={form.name}
+            />
+          </div>
+          <div className="form--container">
+            <input
+              value={email}
+              onChange={this.setGenericValue.bind(this, 'email')}
+              className="input is-rounded is-large"
+              type="text"
+              placeholder={form.email}
+            />
+          </div>
+          <div className="control form--container">
+            <div className="select is-rounded is-large" style={{width: '100%'}}>
+              <select
+                value={jobtitle}
+                onChange={this.setGenericValue.bind(this, 'jobtitle')}
+                style={{width: 'inherit'}}
+                className={!jobtitle ? 'select--unselected' : undefined}
+                required
+              >
+                <option value="">{form.selectStep2.placeholder}</option>
+                {form.selectStep2.roles.map((s, i) => (
+                  <option key={i} value={s.value}>{s.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="form--container">
+            <label className="checkbox has-text-white">
+              <input
+                onChange={this.setGenericValue.bind(this, 'tosAccepted')}
+                style={{marginRight: '1rem'}}
+                className="checkbox"
+                type="checkbox"
+                checked={tosAccepted}
+              />
+              <small className='has-text-white'>
+                {form.tos}
+              </small>
+            </label>
+
+            <p className='has-text-white'>
+              {form.tos2}
+              <a
+                href="https://www.iubenda.com/privacy-policy/119556"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="has-text-white"
+                style={{
+                  marginLeft: '.5rem',
+                  textDecoration: 'underline',
+                }}
+              >
+                {form.tosLink}
+              </a>
+               {form.tos2PostLink}
+            </p>
+            <p className='has-text-white'>
+              {form.tos3}
+            </p>
+          </div>
+
+          <button
+            onClick={this.postFormData.bind(this)}
+            style={{
+              padding: '.5rem 4rem',
+            }}
+            className="button is-info is-large is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+          >
+            {form.ctaStep2}
+          </button>
+        </form>
+      </div>
+    );
+    const steps = !isStep2Visible ? step1 : step2
+    const body = inlineMessage ? (
+      <h2 style={{padding: '4rem 1rem', fontSize: '2rem'}}>
+        {inlineMessage}
+      </h2>
+    ) : (
+      {steps}
+    );
+
     return (
       <section className="section has-text-centered section--form has-text-white">
         <div className="columns is-centered">
-          {inlineMessage &&
-            <h3>{inlineMessage}</h3>
-          }
-          {!inlineMessage && !isStep2Visible ?
-
-            <div className="column is-6">
-              <h3 className="has-text-weight-semibold is-size-4-mobile is-size-2-widescreen" >
-                {form.title}
-              </h3>
-              <p className="has-text-weight-regular is-size-5-widescreen">
-                {form.subtitle}
-              </p>
-              <form className="form">
-                <div className="form--container">
-                  <h3 className="has-text-weight-semibold is-size-2" >
-                    <span>{company_size}</span>
-                    <div
-                      style={{
-                        maxWidth: '30px',
-                        width: `100%`,
-                        display: 'inline-block',
-                        margin: '0 1rem',
-                      }}
-                    >
-                      <PreviewCompatibleImage imageInfo={{image: form.image}} />
-                    </div>
-                    <small className="is-size-6">
-                      {form.pos}
-                    </small>
-                  </h3>
-                  <Slider
-                    axis="x"
-                    xmax={200}
-                    xmin={5}
-                    xstep={1}
-                    x={this.state.company_size}
-                    onChange={({ x }) => this.setState(state => ({ ...state, company_size: x }))}
-                    styles={{
-                      track: {
-                        width: '80%',
-                        height: 3,
-                        backgroundColor: 'white'
-                      },
-                      active: {
-                        backgroundColor: 'white'
-                      },
-                      thumb: {
-                        width: 30,
-                        height: 30
-                      }
-                    }}
-                  />
-                </div>
-                <div className="form--container">
-                  <input
-                    value={company}
-                    onChange={this.setGenericValue.bind(this, 'company')}
-                    className="input is-rounded is-large"
-                    type="text"
-                    placeholder={form.businessname}
-                  />
-                </div>
-                <div className="control form--container">
-                  <div className="select is-rounded is-large" style={{width: '100%'}}>
-                    <select
-                      value={industry}
-                      onChange={this.setGenericValue.bind(this, 'industry')}
-                      style={{width: 'inherit'}}
-                      className={!industry ? 'select--unselected' : undefined}
-                      required
-                    >
-                      <option value="" >{form.select.placeholder}</option>
-                      {form.select.sectors.map((s, i) => (
-                        <option key={i} value={s.value}>{s.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <button
-                  onClick={this.toggleStep2.bind(this)}
-                  style={{padding: '.5rem 4rem'}}
-                  className="button is-info is-large is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-                >
-                  {form.cta}
-                </button>
-              </form>
-            </div> :
-
-            <div className="column is-6">
-              <h3 className="has-text-weight-semibold is-size-4-tablet is-size-3-widescreen" >
-                {form.titleStep2}
-              </h3>
-              <p className="has-text-weight-regular is-size-5-widescreen">
-                {form.subtitleStep2}
-              </p>
-              <form className="form">
-                <div className="form--container">
-                  <input
-                    value={name}
-                    onChange={this.setGenericValue.bind(this, 'name')}
-                    className="input is-rounded is-large"
-                    type="text"
-                    placeholder={form.name}
-                  />
-                </div>
-                <div className="form--container">
-                  <input
-                    value={email}
-                    onChange={this.setGenericValue.bind(this, 'email')}
-                    className="input is-rounded is-large"
-                    type="text"
-                    placeholder={form.email}
-                  />
-                </div>
-                <div className="control form--container">
-                  <div className="select is-rounded is-large" style={{width: '100%'}}>
-                    <select
-                      value={jobtitle}
-                      onChange={this.setGenericValue.bind(this, 'jobtitle')}
-                      style={{width: 'inherit'}}
-                      className={!jobtitle ? 'select--unselected' : undefined}
-                      required
-                    >
-                      <option value="">{form.selectStep2.placeholder}</option>
-                      {form.selectStep2.roles.map((s, i) => (
-                        <option key={i} value={s.value}>{s.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form--container">
-                  <label className="checkbox has-text-white">
-                    <input
-                      onChange={this.setGenericValue.bind(this, 'tosAccepted')}
-                      style={{marginRight: '1rem'}}
-                      className="checkbox"
-                      type="checkbox"
-                      checked={tosAccepted}
-                    />
-                    <small className='has-text-white'>
-                      {form.tos}
-                    </small>
-                  </label>
-
-                  <p className='has-text-white'>
-                    {form.tos2}
-                    <a
-                      href="https://www.iubenda.com/privacy-policy/119556"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="has-text-white"
-                      style={{
-                        marginLeft: '.5rem',
-                        textDecoration: 'underline',
-                      }}
-                    >
-                      {form.tosLink}
-                    </a>
-                     {form.tos2PostLink}
-                  </p>
-                  <p className='has-text-white'>
-                    {form.tos3}
-                  </p>
-                </div>
-
-                <button
-                  onClick={this.postFormData.bind(this)}
-                  style={{
-                    padding: '.5rem 4rem',
-                  }}
-                  className="button is-info is-large is-rounded is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-                >
-                  {form.ctaStep2}
-                </button>
-              </form>
-            </div>
-          }
+          {body}
         </div>
       </section>
     );
