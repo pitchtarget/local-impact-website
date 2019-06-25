@@ -255,7 +255,9 @@ const LandingForm = class extends React.Component {
         {inlineMessage}
       </h2>
     ) : (
-      {steps}
+      <>
+        {steps}
+      </>
     );
 
     return (
