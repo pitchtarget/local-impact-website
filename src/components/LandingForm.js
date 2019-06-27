@@ -29,7 +29,11 @@ const LandingForm = class extends React.Component {
     e.preventDefault();
 
     const { company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
-    this.setState({ loading: true });
+    if ([company_size, company, industry, name, email, jobtitle].some(e => !e)) {
+      return this.setState({error: this.props.form.error});
+    }
+
+    this.setState({ loading: true, error: null });
     try {
       const res = await axios.post(formUrl, {
         fields: [
@@ -68,11 +72,16 @@ const LandingForm = class extends React.Component {
   }
 
   toggleStep2(e) {
-    this.setState(state => ({...state, isStep2Visible: !state.isStep2Visible}));
+    const { company_size, company, industry } = this.state;
+    if ([company_size, company, industry].some(e => !e)) {
+      return this.setState({error: this.props.form.error});
+    }
+
+    this.setState(state => ({...state, isStep2Visible: !state.isStep2Visible, error: null}));
   }
 
   render() {
-    const { isStep2Visible, inlineMessage, company_size, company, industry, name, email, jobtitle, tosAccepted } = this.state;
+    const { isStep2Visible, inlineMessage, company_size, company, industry, name, error, email, jobtitle, tosAccepted } = this.state;
     const { form } = this.props;
     const step1 = (
       <div className="column is-6">
@@ -125,6 +134,7 @@ const LandingForm = class extends React.Component {
           </div>
           <div className="form--container">
             <input
+              required
               value={company}
               onChange={this.setGenericValue.bind(this, 'company')}
               className="input is-rounded is-large"
@@ -148,6 +158,7 @@ const LandingForm = class extends React.Component {
               </select>
             </div>
           </div>
+          {error && <p style={{marginBottom: '0.5rem'}}>{error}</p>}
           <button
             onClick={this.toggleStep2.bind(this)}
             style={{padding: '.5rem 4rem'}}
@@ -169,6 +180,7 @@ const LandingForm = class extends React.Component {
         <form className="form">
           <div className="form--container">
             <input
+              required
               value={name}
               onChange={this.setGenericValue.bind(this, 'name')}
               className="input is-rounded is-large"
@@ -178,6 +190,7 @@ const LandingForm = class extends React.Component {
           </div>
           <div className="form--container">
             <input
+              required
               value={email}
               onChange={this.setGenericValue.bind(this, 'email')}
               className="input is-rounded is-large"
@@ -236,7 +249,7 @@ const LandingForm = class extends React.Component {
               {form.tos3}
             </p>
           </div>
-
+          {error && <p style={{marginBottom: '1rem'}}>{error}</p>}
           <button
             onClick={this.postFormData.bind(this)}
             style={{
@@ -272,6 +285,7 @@ const LandingForm = class extends React.Component {
 
 LandingForm.propTypes = {
   form: PropTypes.shape({
+    error: PropTypes.string,
     title: PropTypes.string,
     subtitle: PropTypes.string,
     businessname: PropTypes.string,

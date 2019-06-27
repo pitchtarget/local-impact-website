@@ -198,6 +198,7 @@ export const pageQuery = graphql`
           description
         }
         form {
+          error
           title
           subtitle
           businessname
