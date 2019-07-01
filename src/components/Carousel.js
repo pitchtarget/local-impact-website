@@ -23,7 +23,13 @@ const Carousel = class extends React.Component {
   componentDidMount() {
     this.handleWindowSizeChange() // Set width
     window.addEventListener('resize', this.handleWindowSizeChange)
-    bulmaCarousel.attach('#carousel-demo');
+    bulmaCarousel.attach('#carousel-demo', {
+				breakpoints: [
+          { changePoint: 480, slidesToShow: 1, slidesToScroll: 1 },
+          { changePoint: 640, slidesToShow: 1, slidesToScroll: 1 },
+          { changePoint: 768, slidesToShow: 1, slidesToScroll: 1 }
+        ]
+			});
   }
 
   componentWillMount() {
@@ -43,27 +49,30 @@ const Carousel = class extends React.Component {
   render() {
     const items = this.props.items;
     const { width } = this.state;
+    const widthFixing = width > 846 && width < 1086
+          ? {width: '100%'}
+          : undefined;
     const isMobile = width < 846; // bulma carousel limit
 
     const leftContainerStyle = {
       maxWidth: '500px',
-      margin: isMobile ? '2.5rem 2.5rem 0 2.5rem' : '2.5rem .5rem 2.5rem auto'
+      margin: isMobile ? 'auto auto 1rem auto' : '2.5rem .5rem 2.5rem auto'
     };
     const rightContainerStyle = {
       maxWidth: '500px',
-      margin: isMobile ? '0 2.5rem 2.5rem 2.5rem' : '2.5rem auto 2.5rem .5rem',
+      margin: isMobile ? '1rem auto auto auto' : '2.5rem auto 2.5rem .5rem',
       textAlign: isMobile ? 'center' : 'left',
     };
 
     return (
       <section
         className="hero is-medium has-carousel carousel--bg"
-        style={{minHeight: isMobile ? '80vh' : '600px'}}
+        style={{minHeight: isMobile ? '100vh' : '600px'}}
       >
-        <div className={!isMobile ? "container is-fluid" : ''} >
-          <div id="carousel-demo" className="hero-carousel carousel--container" >
+        <div className={!isMobile ? "container is-fluid" : ''} style={widthFixing}>
+          <div id="carousel-demo" className="hero-carousel carousel--container">
             {items.map((item, i) => (
-              <div key={item.title} className={`item-${i} columns is-vcentered`}>
+              <div key={item.title} className={`item-${i} columns is-vcentered is-gapless`} style={{maxWidth: width}}>
                 <div className="column is-6">
                   <div
                     className="carousel--image"
