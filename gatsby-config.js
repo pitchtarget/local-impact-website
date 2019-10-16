@@ -64,6 +64,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-intercom`,
+      options: {
+        appId: 'cuinpbbr',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
