@@ -68,6 +68,12 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-iubenda-cookie-footer',
+      options: {
+        iubendaOptions: {"lang":"it","siteId": process.env.GATSBY_IUBENDA_SITE_ID,"cookiePolicyId": process.env.GATSBY_IUBENDA_POLICY_ID},
+      }
+    },
+    {
       resolve: `gatsby-plugin-intercom`,
       options: {
         appId: process.env.GATSBY_INTERCOM_APP_ID,
