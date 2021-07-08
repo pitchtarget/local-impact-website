@@ -1,9 +1,13 @@
 var proxy = require("http-proxy-middleware")
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    hubspotFormGuid: process.env.GATSBY_HUBSPOT_FORM_GUID,
-    hubspotPortalId: process.env.GATSBY_HUBSPOT_PORTAL_ID,
+    intercomAppId: process.env.GATSBY_INTERCOM_ACCESS_TOKEN,
+    intercomAccessToken: process.env.GATSBY_INTERCOM_APP_ID,
     title: 'Local Impact',
     description:
       'Local Impact è una piattaforma che automatizza le tue inserzioni su Facebook e sincronizza la tua strategia online con i punti vendita fisici.',
@@ -61,6 +65,12 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-intercom`,
+      options: {
+        appId: process.env.GATSBY_INTERCOM_APP_ID,
       },
     },
     {
